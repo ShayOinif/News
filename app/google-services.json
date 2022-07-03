@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "803127160122",
+    "project_id": "newsapi-57c73",
+    "storage_bucket": "newsapi-57c73.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:803127160122:android:1e18db470fdee0e62e3403",
+        "android_client_info": {
+          "package_name": "com.shayo.news"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "803127160122-9a3k8ghi9ags1g7omrh0nof86dffmk6l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJMPIztPcNPT7P3VOVMlSkB2fvWOiE5hk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "803127160122-9a3k8ghi9ags1g7omrh0nof86dffmk6l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

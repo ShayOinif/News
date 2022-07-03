@@ -1,11 +1,19 @@
 package com.shayo.news.ui.news
 
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.Network
+import android.net.NetworkRequest
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.SearchView
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -17,6 +25,8 @@ import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.OrientationHelper
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.logEvent
 import com.shayo.news.R
 import com.shayo.news.data.model.FragmentType
 import com.shayo.news.data.model.SortParams
@@ -28,6 +38,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.launch
+import java.lang.ref.WeakReference
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -194,6 +205,63 @@ class NewsSearchFragment : Fragment(R.layout.fragment_news_search_list) {
         return true
     }
 
+
+    //private lateinit var myReceiver: MyReceiver
+
+    private val nc = object : ConnectivityManager.NetworkCallback() {
+        override fun onAvailable(network: Network) {
+            super.onAvailable(network)
+
+            newsAdapter.refresh()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        /*myReceiver = MyReceiver(WeakReference(newsAdapter))
+
+        IntentFilter(Intent.ACTION_AIRPLANE_MODE_CHANGED).also {
+            // registering the receiver
+            // it parameter which is passed in  registerReceiver() function
+            // is the intent filter that we have just created
+            requireActivity().registerReceiver(myReceiver, it)
+        }*/
+
+        val cm = ContextCompat.getSystemService(
+            requireContext(),
+            ConnectivityManager::class.java
+        ) as ConnectivityManager
+
+        val nr = NetworkRequest.Builder().build()
+
+        cm.registerNetworkCallback(nr, object : ConnectivityManager.NetworkCallback() {
+            override fun onAvailable(network: Network) {
+                super.onAvailable(network)
+
+                newsAdapter.refresh()
+            }
+        })
+
+        val firebaseAnalytics = FirebaseAnalytics.getInstance(requireContext())
+
+        firebaseAnalytics.logEvent(FirebaseAnalytics.Event.LOGIN) {
+        }
+    }
+
+    override fun onPause() {
+        super.onPause()
+
+        //requireContext().unregisterReceiver(myReceiver)
+
+        val cm = ContextCompat.getSystemService(
+            requireContext(),
+            ConnectivityManager::class.java
+        ) as ConnectivityManager
+
+        cm.unregisterNetworkCallback(nc)
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -205,4 +273,15 @@ private enum class FragmentState {
     LOADING,
     OK,
     EMPTY_SEARCH
+}
+
+private class MyReceiver(private val newsAdapter: WeakReference<NewsAdapter>) :
+    BroadcastReceiver() {
+    override fun onReceive(p0: Context?, p1: Intent?) {
+        val isAirplane = p1?.getBooleanExtra("state", false) ?: return
+
+        if (isAirplane) {
+            Log.d("Shay", "Airplane Mode!")
+        }
+    }
 }
