@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">News</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_favorites">Favorites</string>
+
+    <string name="search">Search</string>
+    <string name="news_image">News image</string>
+    <string name="retry">Retry</string>
+    <string name="relevance">Relevance</string>
+    <string name="popularity">Popularity</string>
+    <string name="recently_uploaded">Recently Added</string>
+    <string name="top_headlines">Top Headlines</string>
+    <string name="search_news">Search News</string>
+    <string name="button_to_save_news_article_locally">button to save news article locally</string>
+    <string name="image_description_delete_news_article">Delete news article</string>
+    <string name="spinner">spinner</string>
+    <string name="search_news_from_available_options">Search News from available options</string>
+    <string name="business">Business</string>
+    <string name="entertainment">Entertainment</string>
+    <string name="general">General</string>
+    <string name="health">Health</string>
+    <string name="science">Science</string>
+    <string name="sports">Sports</string>
+    <string name="technology">Technology</string>
+    <string name="search_for_topics_events_or_locations">Search For Topics, Events or Locations</string>
+    <string name="that_s_all_folks">That\'s all Folks!</string>
+    <string name="you_re_all_caught_up">You\'re all caught up !</string>
+    <string name="sort_options">Sort Options</string>
+    <string name="country_options">Select Country</string>
+    <string name="menu_news">News</string>
+    <string name="choose_a_category">Choose a category</string>
+    <string name="menu_headline_categories">Categories</string>
+    <string name="error_try_again">Error, try again?</string>
+    <string name="by_name">By name</string>
+    <string name="by_source_name">By source name</string>
+    <string name="your_global_news_source">Your global news source</string>
+    <string name="pick_a_category">Pick a category</string>
+    <string name="on_click_save_articles_to_favorites">On click save articles to favorites</string>
+    <string name="usa">USA</string>
+    <string name="france">France</string>
+    <string name="israel">Israel</string>
+    <string name="uk">UK</string>
+    <string name="italy">Italy</string>
+</resources>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:icon="@drawable/ic_baseline_language_24"
+        android:title="@string/country_options"
+        app:showAsAction="ifRoom">
+        <menu>
+            <item
+                android:id="@+id/us"
+                android:title="@string/usa" />
+            <item
+                android:id="@+id/fr"
+                android:title="@string/france" />
+            <item
+                android:id="@+id/il"
+                android:title="@string/israel" />
+
+            <item
+                android:id="@+id/gb"
+                android:title="@string/uk" />
+
+            <item
+                android:id="@+id/it"
+                android:title="@string/italy" />
+        </menu>
+    </item>
+</menu>
